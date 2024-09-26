@@ -2,6 +2,7 @@ import SwiftUI
 import FirebaseAuth
 
 struct WorkoutsView: View {
+<<<<<<< HEAD
     @StateObject private var workoutService = WorkoutService()
     @State private var workouts: [Workout] = []
     @State private var errorMessage: String?
@@ -69,6 +70,19 @@ struct WorkoutDetailView: View {
         .onAppear {
             viewModel.getExercisesForWorkout(workoutId: workout.id ?? "")
         }
+=======
+    @State private var showCreateWorkout = false
+    
+    var body: some View {
+        NavigationView {
+            Button("Create Workout") {
+                showCreateWorkout = true
+            }
+            .sheet(isPresented: $showCreateWorkout) {
+                CreateWorkoutView()
+            }
+        }
+>>>>>>> main
     }
 }
 

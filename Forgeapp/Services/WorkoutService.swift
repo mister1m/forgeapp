@@ -9,6 +9,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
+<<<<<<< HEAD
 class WorkoutService: ObservableObject {
     private var db = Firestore.firestore()
     
@@ -63,6 +64,16 @@ class WorkoutService: ObservableObject {
             }
 
             completion(exercises, nil)
+=======
+struct WorkoutService {
+    static func uploadWorkload( workout: Workout) async throws -> String {
+        do {
+            let workoutData = try Firestore.Encoder().encode(workout)
+            let documentReference = try await Firestore.firestore().collection("workouts").addDocument(data: workoutData)
+            return documentReference.documentID
+        } catch {
+            throw error
+>>>>>>> main
         }
     }
 }
